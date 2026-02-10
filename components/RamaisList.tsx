@@ -1,28 +1,28 @@
 'use client';
 
-import { useState } from "react";
+import { Colaborador } from "@/types";
+import { useSearch } from "@/hooks/useSearch";
 
-interface Colaborador {
-    id: number;
-    nome: string;
-    ramal: string;
-    setor: string;
-    email: string;
+interface RamaisListProps {
+    colaboradores: Colaborador[];
 }
 
-export default function RamaisList({ colaboradores }: { colaboradores: Colaborador[] }) {
-    const [busca, setBusca] = useState('');
-
-    const filtrados = colaboradores.filter((c) =>
-        c.nome.toLowerCase().includes(busca.toLowerCase()) ||
-        c.setor.toLowerCase().includes(busca.toLowerCase()) ||
-        c.ramal.includes(busca)
+export default function RamaisList({ colaboradores }: RamaisListProps) {
+    const { busca, setBusca, filtrados } = useSearch(
+        colaboradores,
+        (c) => [c.nome, c.setor, c.ramal]
     );
 
     return (
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <div className="mb-6">
-                <input type="text" placeholder="Busque por nome, setor ou ramal..." className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sotrigo-orange" value={busca} onChange={(e) => setBusca(e.target.value)} />
+                <input
+                    type="text"
+                    placeholder="Busque por nome, setor ou ramal..."
+                    className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-sotrigo-orange"
+                    value={busca}
+                    onChange={(e) => setBusca(e.target.value)}
+                />
             </div>
 
             <div className="overflow-x-auto">

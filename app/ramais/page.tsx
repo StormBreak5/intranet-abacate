@@ -1,12 +1,5 @@
 import RamaisList from "@/components/RamaisList";
-
-//dados mockados
-const mockData = [
-    { id: 1, nome: "João da Silva", setor: "TI", ramal: "2020", email: "joao@sotrigo.com.br" },
-    { id: 2, nome: "Maria Souza", setor: "RH", ramal: "2035", email: "maria@sotrigo.com.br" },
-    { id: 3, nome: "Carlos Vendas", setor: "Comercial", ramal: "2040", email: "carlos@sotrigo.com.br" },
-    { id: 4, nome: "Ana Financeiro", setor: "Financeiro", ramal: "2050", email: "ana@sotrigo.com.br" },
-];
+import { mockColaboradores } from "@/types/mocks";
 
 export default function RamaisPage() {
     return (
@@ -20,7 +13,7 @@ export default function RamaisPage() {
                     + Novo Ramal (Admin)
                 </button>
             </div>
-            <RamaisList colaboradores={mockData} />
+            <RamaisList colaboradores={mockColaboradores} />
         </div>
     );
 }
