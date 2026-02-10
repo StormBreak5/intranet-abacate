@@ -7,12 +7,11 @@ import { mockSistemas, mockNoticias, mockAniversariantes, mockDocumentosUteis } 
 
 export default function Home() {
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-8">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 lg:space-y-8">
       <WelcomeBanner />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-8">
-          {/* Acesso Rápido */}
           <section>
             <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
               🚀 Acesso Rápido
@@ -24,7 +23,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Últimas Notícias */}
           <section>
             <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
               📰 Últimas Notícias
@@ -37,7 +35,6 @@ export default function Home() {
           </section>
         </div>
 
-        {/* Sidebar */}
         <aside className="space-y-8">
           <BirthdayList aniversariantes={mockAniversariantes} />
           <DocumentsList documentos={mockDocumentosUteis} />

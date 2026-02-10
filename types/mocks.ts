@@ -1,6 +1,5 @@
 import { Arquivo, Sistema, Noticia, Aniversariante, DocumentoUtil, Colaborador } from './index';
 
-// Mock de Arquivos/Documentos
 export const mockArquivos: Record<string, Arquivo[]> = {
     root: [
         { id: 1, nome: "Recursos Humanos", tipo: "folder", data: "10/01/2026" },
@@ -19,7 +18,6 @@ export const mockArquivos: Record<string, Arquivo[]> = {
     ]
 };
 
-// Mock de Sistemas
 export const mockSistemas: Sistema[] = [
     { nome: "ERP Totvs", icone: "📊", url: "#" },
     { nome: "Webmail", icone: "📧", url: "#" },
@@ -27,7 +25,6 @@ export const mockSistemas: Sistema[] = [
     { nome: "Chamados TI", icone: "🔧", url: "#" },
 ];
 
-// Mock de Notícias
 export const mockNoticias: Noticia[] = [
     {
         id: 1,
@@ -55,7 +52,6 @@ export const mockNoticias: Noticia[] = [
     },
 ];
 
-// Mock de Aniversariantes
 export const mockAniversariantes: Aniversariante[] = [
     {
         id: 1,
@@ -77,14 +73,12 @@ export const mockAniversariantes: Aniversariante[] = [
     },
 ];
 
-// Mock de Documentos Úteis
 export const mockDocumentosUteis: DocumentoUtil[] = [
     { id: 1, nome: "Manual do Colaborador", icone: "📄", url: "#" },
     { id: 2, nome: "Plano de Saúde (PDF)", icone: "🏥", url: "#" },
     { id: 3, nome: "Cardápio Mensal", icone: "🍽️", url: "#" },
 ];
 
-// Mock de Colaboradores/Ramais
 export const mockColaboradores: Colaborador[] = [
     { id: 1, nome: "João da Silva", setor: "TI", ramal: "2020", email: "joao@sotrigo.com.br" },
     { id: 2, nome: "Maria Souza", setor: "RH", ramal: "2035", email: "maria@sotrigo.com.br" },

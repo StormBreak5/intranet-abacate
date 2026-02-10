@@ -12,11 +12,11 @@ export default function DocumentosPage() {
     const arquivos = mockArquivos[pastaAtual] || [];
 
     return (
-        <div className="p-8 max-w-6xl mx-auto">
-            <div className="flex items-center justify-between mb-6">
+        <div className="p-4 sm:p-6 lg:p-8 max-w-6xl mx-auto">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
                 <div>
-                    <h1 className="text-3xl font-bold text-gray-800">Documentos</h1>
-                    <p className="text-gray-500">Acesse manuais, políticas e modelos da Sotrigo.</p>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Documentos</h1>
+                    <p className="text-sm sm:text-base text-gray-500">Acesse manuais, políticas e modelos da Sotrigo.</p>
                 </div>
             </div>
 
@@ -25,7 +25,7 @@ export default function DocumentosPage() {
                 <NavigationButton caminhoAtual={caminhoAtual} voltar={voltar} />
             </div>
 
-            <div className="bg-white p-6 rounded-b-xl shadow-sm min-h-[400px]">
+            <div className="bg-white p-4 sm:p-6 rounded-b-xl shadow-sm min-h-[400px]">
                 {arquivos.length === 0 ? (
                     <EmptyFolder />
                 ) : (

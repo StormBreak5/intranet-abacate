@@ -1,6 +1,3 @@
-// Tipos e Interfaces da Aplicação
-
-// Colaborador/Ramal
 export interface Colaborador {
     id: number;
     nome: string;
@@ -9,7 +6,6 @@ export interface Colaborador {
     email: string;
 }
 
-// Arquivo/Documento
 export type TipoArquivo = 'folder' | 'pdf' | 'excel' | 'word';
 
 export interface Arquivo {
@@ -20,14 +16,12 @@ export interface Arquivo {
     data: string;
 }
 
-// Sistema de Acesso Rápido
 export interface Sistema {
     nome: string;
     icone: string;
     url: string;
 }
 
-// Notícia
 export interface Noticia {
     id: number;
     titulo: string;
@@ -37,7 +31,6 @@ export interface Noticia {
     corTag: string;
 }
 
-// Aniversariante
 export interface Aniversariante {
     id: number;
     nome: string;
@@ -48,14 +41,12 @@ export interface Aniversariante {
     corTexto: string;
 }
 
-// Item de Menu da Sidebar
 export interface MenuItem {
     name: string;
     icon: any; // LucideIcon type
     path: string;
 }
 
-// Documento Útil
 export interface DocumentoUtil {
     id: number;
     nome: string;
