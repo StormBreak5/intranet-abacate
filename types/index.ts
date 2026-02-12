@@ -26,9 +26,11 @@ export interface Noticia {
     id: number;
     titulo: string;
     resumo: string;
+    conteudo: string;
     data: string;
     tag: string;
     corTag: string;
+    imagem?: string; // Base64-encoded image or URL
 }
 
 export interface Aniversariante {

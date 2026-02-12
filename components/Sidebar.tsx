@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { Home, Users, FileText, Bell, Menu, X } from 'lucide-react';
+import { Home, Users, FileText, Bell, Menu, X, FileEdit } from 'lucide-react';
 import { MenuItem as MenuItemType } from '@/types';
 import { SidebarHeader } from './sidebar/SidebarHeader';
 import { MenuItem } from './sidebar/MenuItem';
@@ -42,6 +42,7 @@ export function Sidebar() {
         { name: 'Ramais', icon: Users, path: '/ramais' },
         { name: 'Documentos', icon: FileText, path: '/documentos' },
         { name: 'Avisos', icon: Bell, path: '/avisos' },
+        { name: 'Gerenciar Posts', icon: FileEdit, path: '/admin/posts' },
     ];
 
     return (

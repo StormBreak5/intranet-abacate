@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   /* Cores customizadas da Sotrigo */
@@ -11,4 +12,36 @@
   --color-primary: #FF6600;
   --color-secondary: #00A859;
   --color-background: #f4f4f5;
+}
+
+/* Correção para o editor de texto rico */
+.rich-text-editor ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin: 1em 0 !important;
+}
+
+.rich-text-editor ol {
+  list-style-type: decimal !important;
+  padding-left: 1.5rem !important;
+  margin: 1em 0 !important;
+}
+
+.rich-text-editor p {
+  margin: 0.5em 0 !important;
+}
+
+@keyframes carousel-progress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.animate-progress {
+  width: 0;
+  animation: carousel-progress 5s linear forwards;
 }
