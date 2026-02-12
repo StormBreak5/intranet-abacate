@@ -1,6 +1,6 @@
-# Intranet Sotrigo
+# Intranet Abacate
 
-Portal corporativo interno da Sotrigo Alimentos, desenvolvido para centralizar informações e facilitar o acesso dos colaboradores aos recursos da empresa.
+Portal corporativo, desenvolvido para centralizar informações e facilitar o acesso dos colaboradores aos recursos da empresa.
 
 ## 🚀 Funcionalidades
 
@@ -44,4 +44,4 @@ Acesse [http://localhost:3000](http://localhost:3000)
 
 ## 🎨 Design
 
-Interface responsiva com identidade visual da Sotrigo, otimizada para desktop e mobile.
+Interface responsiva com identidade visual otimizada para desktop e mobile.
