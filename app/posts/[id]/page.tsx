@@ -1,51 +1,26 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
 import { Noticia } from '@/types';
-import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar } from 'lucide-react';
 import Link from 'next/link';
-import { mockNoticias } from '@/types/mocks';
+import prisma from '@/lib/prisma';
+import { notFound } from 'next/navigation';
 
-export default function PostReadingPage() {
-    const params = useParams();
-    const router = useRouter();
-    const [post, setPost] = useState<Noticia | null>(null);
-    const [loading, setLoading] = useState(true);
+interface PageProps {
+    params: Promise<{ id: string }>;
+}
 
-    useEffect(() => {
-        const postId = parseInt(params.id as string);
+export default async function PostReadingPage({ params }: PageProps) {
+    const { id } = await params;
+    const postId = parseInt(id);
 
-        // Load from localStorage
-        try {
-            const stored = localStorage.getItem('intranet_posts');
-            let allPosts: Noticia[] = [...mockNoticias];
-
-            if (stored) {
-                const createdPosts: Noticia[] = JSON.parse(stored);
-                allPosts = [...createdPosts, ...mockNoticias];
-            }
-
-            const foundPost = allPosts.find(p => p.id === postId);
-            setPost(foundPost || null);
-        } catch (error) {
-            console.error('Error loading post:', error);
-        } finally {
-            setLoading(false);
-        }
-    }, [params.id]);
-
-    if (loading) {
-        return (
-            <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
-                <div className="flex items-center justify-center h-64">
-                    <div className="text-gray-500">Carregando...</div>
-                </div>
-            </div>
-        );
+    if (isNaN(postId)) {
+        notFound();
     }
 
-    if (!post) {
+    const postDB = await prisma.post.findUnique({
+        where: { id: postId }
+    });
+
+    if (!postDB) {
         return (
             <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">
                 <div className="text-center py-12">
@@ -62,6 +37,17 @@ export default function PostReadingPage() {
             </div>
         );
     }
+
+    const post: Noticia = {
+        id: postDB.id,
+        titulo: postDB.title,
+        resumo: postDB.summary,
+        conteudo: postDB.content,
+        data: postDB.date,
+        tag: postDB.tag,
+        corTag: postDB.tagColor,
+        imagem: postDB.image || undefined
+    };
 
     return (
         <div className="p-4 sm:p-6 lg:p-8 max-w-4xl mx-auto">

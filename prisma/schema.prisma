@@ -12,3 +12,54 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  summary   String
+  content   String
+  date      String
+  tag       String
+  tagColor  String
+  image     String?
+}
+
+model Collaborator {
+  id        Int      @id @default(autoincrement())
+  name      String
+  extension String
+  sector    String
+  email     String
+}
+
+model File {
+  id        Int      @id @default(autoincrement())
+  name      String
+  type      String
+  size      String?
+  date      String
+}
+
+model Birthday {
+  id        Int      @id @default(autoincrement())
+  name      String
+  initials  String
+  day       Int
+  sector    String
+  bgColor   String
+  textColor String
+}
+
+model SystemLink {
+  id    Int    @id @default(autoincrement())
+  name  String
+  icon  String
+  url   String
+}
+
+model UtilityDoc {
+  id    Int    @id @default(autoincrement())
+  name  String
+  icon  String
+  url   String
+}

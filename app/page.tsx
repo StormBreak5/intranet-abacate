@@ -1,31 +1,30 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import { WelcomeBanner } from "@/components/dashboard/WelcomeBanner";
 import { QuickAccessCard } from "@/components/dashboard/QuickAccessCard";
 import { NewsCard } from "@/components/dashboard/NewsCard";
 import { NewsCarousel } from "@/components/dashboard/NewsCarousel";
 import { BirthdayList } from "@/components/dashboard/BirthdayList";
 import { DocumentsList } from "@/components/dashboard/DocumentsList";
-import { mockSistemas, mockNoticias, mockAniversariantes, mockDocumentosUteis } from "@/types/mocks";
+import { mockSistemas, mockAniversariantes, mockDocumentosUteis } from "@/types/mocks";
 import { Noticia } from "@/types";
+import prisma from "@/lib/prisma";
 
-export default function Home() {
-  const [allNoticias, setAllNoticias] = useState<Noticia[]>(mockNoticias);
-
-  useEffect(() => {
-    // Load posts from localStorage
-    try {
-      const stored = localStorage.getItem('intranet_posts');
-      if (stored) {
-        const createdPosts: Noticia[] = JSON.parse(stored);
-        // Combine created posts with mock posts, created posts first
-        setAllNoticias([...createdPosts, ...mockNoticias]);
-      }
-    } catch (error) {
-      console.error('Error loading posts:', error);
+export default async function Home() {
+  const dbPosts = await prisma.post.findMany({
+    orderBy: {
+      id: 'desc'
     }
-  }, []);
+  });
+
+  const allNoticias: Noticia[] = dbPosts.map(post => ({
+    id: post.id,
+    titulo: post.title,
+    resumo: post.summary,
+    conteudo: post.content,
+    data: post.date,
+    tag: post.tag,
+    corTag: post.tagColor,
+    imagem: post.image || undefined
+  }));
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6 lg:space-y-8">
